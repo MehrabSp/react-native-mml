@@ -1,18 +1,29 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-mml';
+import { StyleSheet, View, Text, Pressable } from 'react-native';
+//call from library
+import { getAll, getCheck } from 'react-native-mml';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
-
+  const All = async () => {
+    //result (slow)
+    console.log(await getAll({ title: true, cover: true }));
+  };
+  const Checker = async () => {
+    //result (very fast)
+    console.log(await getCheck());
+  };
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Pressable
+        onPress={() => {
+          console.log('press');
+          All();
+          Checker();
+        }}
+      >
+        <Text>Go</Text>
+      </Pressable>
     </View>
   );
 }
@@ -20,6 +31,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'red',
     alignItems: 'center',
     justifyContent: 'center',
   },

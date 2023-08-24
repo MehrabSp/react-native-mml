@@ -24,6 +24,37 @@ const Mml = MmlModule
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return Mml.multiply(a, b);
+export function getAll(options: any): Promise<any> {
+  return new Promise<any>((resolve, reject) => {
+    if (Platform.OS === 'android') {
+      Mml.getAll(
+        options,
+        (tracks: any) => {
+          resolve(tracks);
+        },
+        (error: any) => {
+          reject(error);
+        }
+      );
+    } else {
+      console.log('Media Library only work for android');
+    }
+  });
+}
+export function getCheck(): Promise<any> {
+  return new Promise<any>((resolve, reject) => {
+    if (Platform.OS === 'android') {
+      Mml.getAll(
+        { check: true },
+        (tracks: any) => {
+          resolve(tracks);
+        },
+        (error: any) => {
+          reject(error);
+        }
+      );
+    } else {
+      console.log('Media Library only work for android');
+    }
+  });
 }
