@@ -12,5 +12,5 @@ abstract class MmlSpec extends ReactContextBaseJavaModule {
     super(context);
   }
 
-  public abstract void getAll(ReadableMap options, Callback successCallback, Callback errorCallback) throws IOException;
+  public abstract void getAll(ReadableMap options, String Type, final Callback successCallback, final Callback errorCallback) throws IOException;
 }
