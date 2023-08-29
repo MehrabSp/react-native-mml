@@ -1,18 +1,19 @@
-package com.mml;
+package com.max;
 
 import android.graphics.Bitmap;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-/**
- * MRB
- * 8/16/23
- * Nesfe Shab. Yadegara
- * Add turbo module on 8/24/23
- */
+import static com.max.GetMusicFilesModule.quality;
 
 public class FileManager {
+
+    @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
     public static void FileSaver(
             File file,
             Bitmap bmp
@@ -20,7 +21,7 @@ public class FileManager {
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(file);
-            bmp.compress(Bitmap.CompressFormat.JPEG, 85, fos);
+            bmp.compress(Bitmap.CompressFormat.JPEG, quality, fos);
         } catch (IOException e) {
             throw new Exception("Failed to save image!");
         } finally {

@@ -1,5 +1,11 @@
 import { NativeModules, Platform } from 'react-native';
 
+export interface Mml {
+  options: any;
+  type: 'Images' | 'Videos' | 'Musics';
+  check?: boolean;
+}
+
 const LINKING_ERROR =
   `The package 'react-native-mml' doesn't seem to be linked. Make sure: \n\n` +
   Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
@@ -24,37 +30,33 @@ const Mml = MmlModule
       }
     );
 
-export function getAll(options: any): Promise<any> {
-  return new Promise<any>((resolve, reject) => {
-    if (Platform.OS === 'android') {
-      Mml.getAll(
-        options,
-        (tracks: any) => {
-          resolve(tracks);
-        },
-        (error: any) => {
-          reject(error);
-        }
-      );
-    } else {
-      console.log('Media Library only work for android');
-    }
-  });
-}
-export function getCheck(): Promise<any> {
-  return new Promise<any>((resolve, reject) => {
-    if (Platform.OS === 'android') {
-      Mml.getAll(
-        { check: true },
-        (tracks: any) => {
-          resolve(tracks);
-        },
-        (error: any) => {
-          reject(error);
-        }
-      );
-    } else {
-      console.log('Media Library only work for android');
-    }
+export const callToModule = function (
+  { options, type }: any,
+  Resolve: any,
+  Reject: any
+) {
+  if (Platform.OS === 'android') {
+    Mml.getAll(
+      options,
+      type,
+      (tracks: any) => {
+        Resolve(tracks);
+      },
+      (error: any) => {
+        //reject
+        Reject(error);
+      }
+    );
+  } else {
+    throw new Error(
+      'Error: The react-native-mml library only supports Android!'
+    );
+  }
+};
+
+export function getAll({ options, type, check = false }: Mml) {
+  if (check) options = { check: true };
+  return new Promise((resolve, reject) => {
+    callToModule({ options, type }, resolve, reject);
   });
 }

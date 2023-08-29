@@ -1,20 +1,26 @@
-package com.mml;
+package com.max;
 
+import android.app.Application;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import androidx.palette.graphics.Palette;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+import androidx.palette.graphics.Palette; //getColor
 
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeMap;
 
-public class ImageColorPicker {
+import static com.max.GetMusicFilesModule.fallback;
+
+public class ImageColorPicker extends Application {
 
     /**
      * pixelSpacing tells how many pixels to skip each pixel.
      * If pixelSpacing > 1: the average color is an estimate, but higher values mean better performance.
      * If pixelSpacing == 1: the average color will be the real average.
      * If pixelSpacing < 1: the method will most likely crash (don't use values below 1).
-     * MRB!
+     * MRB.
      */
     private static int calculateAverageColor(Bitmap bitmap, int pixelSpacing) {
         int segmentWidth = 500;
@@ -54,7 +60,8 @@ public class ImageColorPicker {
     }
 
     public static String parseFallbackColor(String hex) throws Exception {
-        if (!hex.matches("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$")) throw new Exception("Invalid fallback hex color. Must be in the format #ffffff or #fff");
+        if (!hex.matches("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"))
+            throw new Exception("Invalid fallback hex color. Must be in the format #ffffff or #fff");
         if (hex.length() == 7) return hex;
         return "#" + hex.charAt(1) + hex.charAt(1) + hex.charAt(2) + hex.charAt(2) + hex.charAt(3) + hex.charAt(3);
     }
@@ -63,8 +70,8 @@ public class ImageColorPicker {
         return String.format("#%06X", 0xFFFFFF & rgb);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
     public static WritableMap getColor(
-            String fallback,
             Number pixelSpacing,
             Bitmap songImage
     ) throws Exception {
