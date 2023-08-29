@@ -1,6 +1,6 @@
 {
   "name": "react-native-mml",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "React Native Media Max Library",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
