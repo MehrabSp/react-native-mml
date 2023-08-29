@@ -12,20 +12,20 @@ export default function App() {
   const Musics = async () => {
     console.log(
       await getAll({ options: { check: true, title: true }, type: 'Musics' }),
-      'test!'
-    ); // check test
+      'Musics!'
+    );
   };
   const Images = async () => {
     console.log(
       await getAll({ options: { check: true, title: true }, type: 'Images' }),
-      'test!'
-    ); // check test
+      'Images!'
+    );
   };
   const Videos = async () => {
     console.log(
       await getAll({ options: { check: true, title: true }, type: 'Videos' }),
-      'test!'
-    ); // check test
+      'Videos!'
+    );
   };
 
   //   const dateAddedSeconds = 1693068596;
