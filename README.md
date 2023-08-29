@@ -3,7 +3,14 @@
 React Native Media Library
 
 New turbo module (only for Android)
-In the update and testing phase
+
+## New Update
+A new update has been released
+What has been added?
+
+- Get all videos from memory
+- Get all photos from memory
+- Typing is correct for typescript
 
 What does this module do?
 
