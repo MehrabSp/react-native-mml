@@ -1,4 +1,4 @@
-package com.max;
+package com.mml;
 
 import android.app.Application;
 import android.graphics.Bitmap;
@@ -11,7 +11,7 @@ import androidx.palette.graphics.Palette; //getColor
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeMap;
 
-import static com.max.GetMusicFilesModule.fallback;
+import static com.mml.GetMusicFilesModule.fallback;
 
 public class ImageColorPicker extends Application {
 

@@ -1,4 +1,4 @@
-package com.max;
+package com.mml;
 
 import android.graphics.Bitmap;
 import android.os.Build;
@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import static com.max.GetMusicFilesModule.quality;
+import static com.mml.GetMusicFilesModule.quality;
 
 public class FileManager {
 
