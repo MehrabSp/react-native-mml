@@ -33,7 +33,7 @@ yarn add react-native-mml
 ## Usage
 
 ```js
-//get
+  //get
   //type: 'Musics'
   //type: 'Images'
   //type: 'Videos'
