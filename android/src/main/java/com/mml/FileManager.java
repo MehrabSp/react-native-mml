@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import static com.mml.GetMusicFilesModule.quality;
+import static com.mml.MmlModule.quality;
 
 public class FileManager {
 

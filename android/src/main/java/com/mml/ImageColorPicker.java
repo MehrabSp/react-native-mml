@@ -11,7 +11,7 @@ import androidx.palette.graphics.Palette; //getColor
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeMap;
 
-import static com.mml.GetMusicFilesModule.fallback;
+import static com.mml.MmlModule.fallback;
 
 public class ImageColorPicker extends Application {
 
